@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.porfolio_hisab.entity.Category;
-import com.example.porfolio_hisab.service.ICategoryService;
+import com.example.porfolio_hisab.entity.Stock;
+import com.example.porfolio_hisab.service.IStockServiceImpl;
 
 @RestController
 @CrossOrigin
-public class CategoryController {
+public class StockController {
 	@Autowired
-	ICategoryService categoryService;
+	IStockServiceImpl stockService;
 	
-	//Add Category
-	@PostMapping("/category/add")
-		ResponseEntity<String> addCategory( @RequestBody Category cat){
-		String msg=categoryService.addCategory(cat);
+	//Add Stock
+	@PostMapping("/stock/add")
+		ResponseEntity<String> addStock( @RequestBody Stock stock){
+		String msg=stockService.addStock(stock);
 		return new ResponseEntity<>(msg, HttpStatus.CREATED);
 	}
 	//View All
-	@GetMapping("/category/viewAll")
-	ResponseEntity<List<Category>> viewAll(){
-		List<Category> list = categoryService.viewAllCategory();
+	@GetMapping("/stock/viewAll")
+	ResponseEntity<List<Stock>> viewAll(){
+		List<Stock> list = stockService.viewAllStock();
 		return new ResponseEntity<>(list, HttpStatus.CREATED);
 	}
-	//Delete Category by id
-	@DeleteMapping("/category/delete")
-	ResponseEntity<String> deleteCategoryById(long id){
-		String str = categoryService.deleteCategory(id);
+	//Delete Stock by id
+	@DeleteMapping("/stock/delete")
+	ResponseEntity<String> deleteStockById(long id){
+		String str = stockService.deleteStock(id);
 		return new ResponseEntity<>(str, HttpStatus.CREATED);
 	}
-	//View Category by Id
-	@GetMapping("/category/viewById")
-	ResponseEntity<Category> viewCategoryById(long id){
-		Category cat=categoryService.viewCategory(id);
+	//View Stock by Id
+	@GetMapping("/stock/viewById")
+	ResponseEntity<Stock> viewStockById(long id){
+		Stock cat=stockService.viewStock(id);
 		return new ResponseEntity<>(cat, HttpStatus.CREATED);
 	}
 	

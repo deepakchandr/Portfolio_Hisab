@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.porfolio_hisab.dto.CategoryInputDto;
+import com.example.porfolio_hisab.dto.InputCategoryDto;
 import com.example.porfolio_hisab.entity.Category;
 import com.example.porfolio_hisab.service.ICategoryService;
 
@@ -23,8 +25,8 @@ public class CategoryController {
 	
 	//Add Category
 	@PostMapping("/category/add")
-		ResponseEntity<String> addCategory( @RequestBody Category cat){
-		String msg=categoryService.addCategory(cat);
+		ResponseEntity<String> addCategory( @RequestBody CategoryInputDto catName){
+		String msg=categoryService.addCategory(catName);
 		return new ResponseEntity<>(msg, HttpStatus.CREATED);
 	}
 	//View All

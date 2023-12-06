@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.porfolio_hisab.dto.StockInputDto;
 import com.example.porfolio_hisab.entity.Stock;
 import com.example.porfolio_hisab.service.IStockServiceImpl;
 
@@ -23,7 +24,7 @@ public class StockController {
 	
 	//Add Stock
 	@PostMapping("/stock/add")
-		ResponseEntity<String> addStock( @RequestBody Stock stock){
+		ResponseEntity<String> addStock(@RequestBody StockInputDto stock){
 		String msg=stockService.addStock(stock);
 		return new ResponseEntity<>(msg, HttpStatus.CREATED);
 	}

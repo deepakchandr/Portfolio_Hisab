@@ -10,6 +10,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.porfolio_hisab.dto.CategoryInputDto;
+import com.example.porfolio_hisab.dto.InputCategoryDto;
 import com.example.porfolio_hisab.entity.Category;
 import com.example.porfolio_hisab.repository.ICategoryRepository;
 @Service
@@ -19,8 +21,11 @@ public class CategoryServiceImpl implements ICategoryService {
 	ICategoryRepository categoryRepo;
 	//Adding new category
 	@Override
-	public String addCategory(Category cat) {
-		categoryRepo.save(cat);
+	public String addCategory(CategoryInputDto catName) {
+		Category category = new Category();
+		category.setCategoryName(catName.getCategoryName());
+		categoryRepo.save(category);
+		
 		return "New Category added sucessfully";
 	}
 	//View all Category
@@ -52,4 +57,6 @@ public class CategoryServiceImpl implements ICategoryService {
 			return cat;
 		}
 	}
+	
+	
 }

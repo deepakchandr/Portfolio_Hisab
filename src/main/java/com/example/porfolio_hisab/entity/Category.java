@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import lombok.Data;
 
@@ -18,9 +17,8 @@ public class Category {
 	@GeneratedValue
 	private long id;
 	private String categoryName;
-	private String weightCat;
-	@OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="category_stock_fk")
+	private double weightCat;
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Stock> stock;
 
 }

@@ -1,5 +1,0 @@
-package com.example.porfolio_hisab.service;
-
-public class Stock implements IStock {
-
-}
